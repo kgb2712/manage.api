@@ -1,7 +1,7 @@
 import Commande from '../model/commande.js';
 
 export async function AffichelisteDesCommandes(req,res){
-    const listeDesCommandes = await Commande.find(req.body);
+    const listeDesCommandes = await Commande.find(req.body).sort({ createdAt: -1});;
     res.send(listeDesCommandes);
 } 
 

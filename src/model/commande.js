@@ -10,6 +10,10 @@ let CommandeSchema = new mongoose.Schema({
     produits:{type:'string', require:true },
     montantRecu :{type:'string', require:true },
     resteMontant :{type:'string', require:true },
+    createdAt: {
+        type: Date,
+        default: Date.now
+        }
     
 })
 const Commande = mongoose.model('commandes',CommandeSchema);

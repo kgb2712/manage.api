@@ -1,7 +1,7 @@
 import Client from '../model/clients.js';
 
 export async function AffichelisteDesClients(req,res){
-    const listeDesClients = await Client.find(req.body);
+    const listeDesClients = await Client.find(req.body).sort({ createdAt: -1});
     res.send(listeDesClients);
 }
 

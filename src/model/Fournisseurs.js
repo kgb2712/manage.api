@@ -9,7 +9,7 @@ let FournisseurSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now
-    }
+ }
 })
 const Fournisseur = mongoose.model('fournisseur',FournisseurSchema);
 export default Fournisseur;

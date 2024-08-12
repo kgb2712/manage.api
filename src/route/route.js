@@ -7,14 +7,16 @@ import { AffichelisteDesPersonnes, CreerPersonnes, DetailUnePersonne, MiseAjourP
 
 import { AffichelisteDesCommandes, CreerCommandes,  DetailCommande,  MiseAjourDesCommandes,  SupprimerUneCommande } from '../controler/commandeController .js';
 import { AffichelisteDesProduits, CreerProduits, DetailProduit, MiseAjourDuProduits, SupprimerUnProduits,} from '../controler/produitController .js';
+import { enregistrerUser, login } from '../controler/authentificationControleur.js';
+import { authenticateToken } from '../middlewares/authenticateToken.js';
 
 export const routes = express.Router();
 
-routes.get('/listeDesFournisseurs',AffichelisteDesFournisseurs);
-routes.post('/creationFournisseur',CreerUnFournisseurs);
-routes.delete('/SuppressionFournisseurs/:id', SupprimerUnFournisseurs);
-routes.put('/MiseAJourFournisseurs/:id', MiseAjourFournisseurs);
-routes.get('/DetailsFournisseurs/:id',DetailFournisseurs);
+routes.get('/listeDesFournisseurs',authenticateToken, AffichelisteDesFournisseurs);
+routes.post('/creationFournisseur',authenticateToken,CreerUnFournisseurs);
+routes.delete('/SuppressionFournisseurs/:id',authenticateToken, SupprimerUnFournisseurs);
+routes.put('/MiseAJourFournisseurs/:id',authenticateToken, MiseAjourFournisseurs);
+routes.get('/DetailsFournisseurs/:id',authenticateToken,DetailFournisseurs);
 
 
 
@@ -59,3 +61,7 @@ routes.post('/CreationCommandes',CreerCommandes);
 routes.delete('/SuppressionCommande/:id',SupprimerUneCommande);
 routes.put('/MiseAJourCommande/:id',MiseAjourDesCommandes);
 routes.get('/DetaillCommande/:id',DetailCommande);
+
+
+routes.post('/enregistrer',enregistrerUser);
+routes.post('/login',login);

@@ -2,7 +2,7 @@
 import Personnel from '../model/personnels.js';
 
 export async function AffichelisteDesPersonnes(req,res){
-    const listeDesPersonnels = await Personnel.find(req.body);
+    const listeDesPersonnels = await Personnel.find(req.body).sort({ createdAt: -1});;
     res.send(listeDesPersonnels);
 }
 
